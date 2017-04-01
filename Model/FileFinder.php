@@ -24,9 +24,12 @@ class FileFinder
     }
 
     /**
+     * Get files which have been changed since the given timestamp
+     *
+     * @param int|null $timestamp
      * @return string[]
      */
-    public function getChangedFiles()
+    public function getChangedFiles($timestamp = null)
     {
         $foundFiles = [];
         foreach ($this->getBaseDirectories() as $baseDirectory) {
@@ -34,7 +37,7 @@ class FileFinder
             $iteratorIterator = new \RecursiveIteratorIterator($directoryIterator);
 
             foreach ($iteratorIterator as $file) {
-                if ($this->isFileValid($file)) {
+                if ($this->isFileValidAndModified($file, $timestamp)) {
                     $foundFiles[] = $file->getPath() . DIRECTORY_SEPARATOR . $file->getFileName();
                 }
             }
@@ -43,6 +46,8 @@ class FileFinder
     }
 
     /**
+     * Get base directories form configuration, i.e. 'app/code/'
+     *
      * @return string[]
      */
     private function getBaseDirectories()
@@ -60,13 +65,22 @@ class FileFinder
 
     /**
      * @param \SplFileInfo $file
+     * @param int|null $timestamp
      * @return bool
      */
-    private function isFileValid($file)
+    private function isFileValidAndModified($file, $timestamp = null)
     {
         if($file->getFilename() == 'registration.php') {
             return false;
         }
-        return ($file->getFilename() == 'di.xml' || substr($file->getFilename(), -4) == '.php') && $file->getMTime() >= 1444177204;
+        if (($file->getFilename() != 'di.xml') && (substr($file->getFilename(), -4) != '.php')) {
+            return false;
+        }
+
+        if ($timestamp) {
+            return $file->getMTime() >= $timestamp;
+        }
+
+        return true;
     }
 }
