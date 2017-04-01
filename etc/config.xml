@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <dev>
+            <static>
+                <reaper_paths>
+                    <![CDATA[app/code/
+vendor/[your_namespace]/]]>
+                </reaper_paths>
+            </static>
+        </dev>
+    </default>
+</config>

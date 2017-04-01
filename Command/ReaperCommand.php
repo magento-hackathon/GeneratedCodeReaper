@@ -20,6 +20,17 @@ use Magento\Setup\Module\Dependency\Report\Dependency;
 class ReaperCommand extends \Symfony\Component\Console\Command\Command
 {
     /**
+     * @var \Hackathon\GeneratedCodeReaper\Model\FileFinder
+     */
+    private $fileFinder;
+
+    public function __construct(\Hackathon\GeneratedCodeReaper\Model\FileFinder $fileFinder)
+    {
+        parent::__construct();
+        $this->fileFinder = $fileFinder;
+    }
+
+    /**
      * {@inheritdoc}
      */
     protected function configure()
@@ -37,6 +48,8 @@ class ReaperCommand extends \Symfony\Component\Console\Command\Command
     {
         try {
             $output->writeln('<info>Command started successfully.</info>');
+
+            $this->fileFinder->getChangedFiles();
         } catch (\Exception $e) {
             $output->writeln(
                 '<error>' . $e->getMessage() . '</error>'
