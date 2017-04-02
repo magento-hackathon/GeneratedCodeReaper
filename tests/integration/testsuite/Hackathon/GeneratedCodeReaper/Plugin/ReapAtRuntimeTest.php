@@ -4,8 +4,7 @@ namespace Hackathon\GeneratedCodeReaper\Plugin;
 
 use Magento\TestFramework\ObjectManager;
 use Magento\TestFramework\Interception\PluginList;
-use Magento\Framework\ObjectManager\ConfigLoaderInterface;
-use Magento\Framework\App\Area;
+use Magento\Framework\Code\Generator;
 
 class ReapAtRuntimeTest extends \PHPUnit_Framework_TestCase
 {
@@ -25,7 +24,7 @@ class ReapAtRuntimeTest extends \PHPUnit_Framework_TestCase
         /** @var PluginList $pluginList */
         $pluginList = $this->objectManager->create(PluginList::class);
 
-        $pluginInfo = $pluginList->get(ConfigLoaderInterface::class, []);
+        $pluginInfo = $pluginList->get(Generator::class, []);
         $this->assertSame(ReapAtRuntime::class, $pluginInfo['hackathon_generatedcodereaper_reapatruntime']['instance']);
     }
 }

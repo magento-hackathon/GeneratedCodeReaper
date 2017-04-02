@@ -2,7 +2,7 @@
 
 namespace Hackathon\GeneratedCodeReaper\Plugin;
 
-use Magento\Framework\ObjectManager\ConfigLoaderInterface;
+use Magento\Framework\Code\Generator;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Hackathon\GeneratedCodeReaper\Model\Reaper;
 
@@ -31,16 +31,15 @@ class ReapAtRuntime
         $this->reaper = $reaper;
     }
 
-    public function beforeLoad(
-        ConfigLoaderInterface $subject,
-        $requestedType,
-        array $arguments = []
+    public function afterSetObjectManager(
+        Generator $subject,
+        $result
     ) {
         if (!$this->hasReaped && $this->scopeConfig->getValue(self::XML_PATH_REAP_AT_RUNTIME)) {
             $this->runReaper();
         }
 
-        return [$requestedType, $arguments];
+        return [$result];
     }
 
     private function runReaper()

@@ -15,7 +15,7 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\ObjectManager\ConfigLoaderInterface">
+    <type name="Magento\Framework\Code\Generator">
         <plugin name="hackathon_generatedcodereaper_reapatruntime"
                 type="Hackathon\GeneratedCodeReaper\Plugin\ReapAtRuntime"/>
     </type>
