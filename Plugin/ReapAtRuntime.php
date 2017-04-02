@@ -4,6 +4,7 @@ namespace Hackathon\GeneratedCodeReaper\Plugin;
 
 use Magento\Framework\ObjectManager\ConfigLoaderInterface;
 use Magento\Framework\App\Config\ScopeConfigInterface;
+use Hackathon\GeneratedCodeReaper\Model\Reaper;
 
 class ReapAtRuntime
 {
@@ -17,10 +18,17 @@ class ReapAtRuntime
      */
     private $scopeConfig;
 
+    /**
+     * @var Reaper
+     */
+    private $reaper;
+
     public function __construct(
-        ScopeConfigInterface $scopeConfig
+        ScopeConfigInterface $scopeConfig,
+        Reaper $reaper
     ) {
         $this->scopeConfig = $scopeConfig;
+        $this->reaper = $reaper;
     }
 
     public function beforeLoad(
@@ -28,7 +36,7 @@ class ReapAtRuntime
         $requestedType,
         array $arguments = []
     ) {
-        if ($this->scopeConfig->getValue(self::XML_PATH_REAP_AT_RUNTIME) && !$this->hasReaped) {
+        if (!$this->hasReaped && $this->scopeConfig->getValue(self::XML_PATH_REAP_AT_RUNTIME)) {
             $this->runReaper();
         }
 
@@ -37,6 +45,7 @@ class ReapAtRuntime
 
     private function runReaper()
     {
+        $this->reaper->execute();
         $this->hasReaped = true;
     }
 }
