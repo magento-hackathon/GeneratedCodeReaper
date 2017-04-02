@@ -1,11 +1,8 @@
 <?php
 
-
 namespace Hackathon\GeneratedCodeReaper\Model;
 
 use Hackathon\GeneratedCodeReaper\Model\Reaper\ReaperInterface;
-use Magento\Framework\App\Config\ScopeConfigInterface;
-use Magento\Framework\App\Filesystem\DirectoryList;
 
 class Reaper
 {
@@ -32,7 +29,7 @@ class Reaper
         $this->flag->setFlagData(time())->save();
         $files = $this->fileFinder->getChangedFiles($timestamp);
 
-        foreach($this->reapers as $reaper) {
+        foreach ($this->reapers as $reaper) {
             /** @var ReaperInterface $reaper */
             $reaper->reap($files);
         }

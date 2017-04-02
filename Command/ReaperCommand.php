@@ -1,21 +1,11 @@
 <?php
 namespace Hackathon\GeneratedCodeReaper\Command;
 
-use AvS\DisableModules\Console\Report\RemovableModules\Builder;
-use AvS\DisableModules\Console\Report\RemovableModules\Parser;
-use AvS\DisableModules\Console\Report\RemovableModules\Writer;
-use Magento\Framework\App\Utility\Files;
-use Magento\Framework\Component\ComponentRegistrar;
-use Magento\Framework\Component\ComponentRegistrarInterface;
-use Magento\Framework\Component\DirSearch;
-use Magento\Framework\View\Design\Theme\ThemePackageList;
 use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-use Magento\Setup\Module\Dependency\Report\Dependency;
 
 /**
- * Command for showing nmodules which can be removed / disabled
+ * Command for selectively deleting generated code based on modified timestamp of originating file
  */
 class ReaperCommand extends \Symfony\Component\Console\Command\Command
 {

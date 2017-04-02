@@ -7,6 +7,7 @@
                     <![CDATA[app/code/
 vendor/[your_namespace]/]]>
                 </reaper_paths>
+                <reaper_at_runtime>0</reaper_at_runtime>
             </static>
         </dev>
     </default>

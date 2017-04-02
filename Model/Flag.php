@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Hackathon\GeneratedCodeReaper\Model;
 
 class Flag extends \Magento\Framework\Flag

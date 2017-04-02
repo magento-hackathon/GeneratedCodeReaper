@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Hackathon\GeneratedCodeReaper\Model;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
@@ -27,6 +26,7 @@ class FileFinder
      * Get files which have been changed since the given timestamp
      *
      * @param int|null $timestamp
+     *
      * @return string[]
      */
     public function getChangedFiles($timestamp = null)
@@ -65,12 +65,13 @@ class FileFinder
 
     /**
      * @param \SplFileInfo $file
-     * @param int|null $timestamp
+     * @param int|null     $timestamp
+     *
      * @return bool
      */
     private function isFileValidAndModified($file, $timestamp = null)
     {
-        if($file->getFilename() == 'registration.php') {
+        if ($file->getFilename() == 'registration.php') {
             return false;
         }
         if (($file->getFilename() != 'di.xml') && (substr($file->getFilename(), -4) != '.php')) {
