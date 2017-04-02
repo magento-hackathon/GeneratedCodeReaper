@@ -7,4 +7,11 @@
             </argument>
         </arguments>
     </type>
+    <type name="Hackathon\GeneratedCodeReaper\Model\Reaper">
+        <arguments>
+            <argument name="reapers" xsi:type="array">
+                <item name="interception" xsi:type="object">Hackathon\GeneratedCodeReaper\Model\Reaper\Interceptor</item>
+            </argument>
+        </arguments>
+    </type>
 </config>
