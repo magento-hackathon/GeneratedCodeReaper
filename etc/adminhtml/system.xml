@@ -3,10 +3,10 @@
     <system>
         <section id="dev">
             <group id="static">
-                <field id="reaper_paths" translate="label" type="textarea" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0" canRestore="1">
+                <field id="reaper_paths" translate="label" type="textarea" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
                     <label>Base Paths for Generated Code Reaper</label>
                 </field>
-                <field id="reaper_at_runtime" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0" canRestore="1">
+                <field id="reaper_at_runtime" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
                     <label>Reap on all requests</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
