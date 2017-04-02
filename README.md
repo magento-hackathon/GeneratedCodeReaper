@@ -7,7 +7,7 @@ Currently implemented reapers:
 - Proxy  
 
 ### Usage
-In the Magento back-end under `Stores > Configuration > Developer > Base Paths for Generated Code Reaper` configure
+In the Magento back-end under `Stores > Configuration > Developer > Static Files Settings >Base Paths for Generated Code Reaper` configure
 the base paths you want to 
 
 Examples: 
@@ -19,7 +19,7 @@ On demand from the command line
 `setup:di:reap`
 
 or on every request - enabled via the setting
-`Stores > Configuration > Developer > Reap on all requests`
+`Stores > Configuration > Developer > Static Files Settings > Reap on all requests`
 
 ### Todo
 
