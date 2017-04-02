@@ -11,6 +11,7 @@
         <arguments>
             <argument name="reapers" xsi:type="array">
                 <item name="interception" xsi:type="object">Hackathon\GeneratedCodeReaper\Model\Reaper\Interceptor</item>
+                <item name="proxy" xsi:type="object">Hackathon\GeneratedCodeReaper\Model\Reaper\Proxy</item>
             </argument>
         </arguments>
     </type>
