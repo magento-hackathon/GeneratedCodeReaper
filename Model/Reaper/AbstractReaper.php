@@ -3,6 +3,7 @@
 namespace Hackathon\GeneratedCodeReaper\Model\Reaper;
 
 use Magento\Framework\App\Filesystem\DirectoryList;
+use Magento\Framework\Filesystem\Io\File;
 
 abstract class AbstractReaper implements ReaperInterface
 {
@@ -10,10 +11,15 @@ abstract class AbstractReaper implements ReaperInterface
      * @var DirectoryList
      */
     private $directoryList;
+    /**
+     * @var File
+     */
+    private $file;
 
-    public function __construct(DirectoryList $directoryList)
+    public function __construct(DirectoryList $directoryList, File $file)
     {
         $this->directoryList = $directoryList;
+        $this->file = $file;
     }
 
     /**
@@ -70,8 +76,8 @@ abstract class AbstractReaper implements ReaperInterface
     {
         $generatedCodeBaseDirectory = $this->directoryList->getPath(\Magento\Framework\App\Filesystem\DirectoryList::GENERATION);
         $filename = $generatedCodeBaseDirectory . implode(DIRECTORY_SEPARATOR, explode('\\', $classname)) . '.php';
-        if (is_file($filename)) {
-            unlink($filename);
+        if ($this->file->fileExists($filename)) {
+            $this->file->rm($filename);
         }
     }
 }
